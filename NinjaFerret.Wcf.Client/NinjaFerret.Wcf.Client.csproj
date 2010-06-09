@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NinjaFerret.Wcf.Client</RootNamespace>
+    <AssemblyName>NinjaFerret.Wcf.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\Exception\EndpointForServiceTypeAlreadyExistsException.cs" />
+    <Compile Include="Cache\Exception\EndpointNotFoundForTypeException.cs" />
+    <Compile Include="Cache\ICallWrapperCache.cs" />
+    <Compile Include="Cache\ITypeCache.cs" />
+    <Compile Include="Cache\CallWrapperCache.cs" />
+    <Compile Include="Cache\Exception\CallWrapperIsWrongTypeException.cs" />
+    <Compile Include="Cache\Exception\ServiceInterfaceTypeNotFoundException.cs" />
+    <Compile Include="Cache\Exception\ServiceTypeAlreadyAddedException.cs" />
+    <Compile Include="Cache\TypeCache.cs" />
+    <Compile Include="CallWrapper\ICallWrapper.cs" />
+    <Compile Include="CallWrapper\CallWrapper.cs" />
+    <Compile Include="ClientFactory.cs" />
+    <Compile Include="Common\IServiceTypeValidator.cs" />
+    <Compile Include="Common\Exception\NotAnInterfaceExcpetion.cs" />
+    <Compile Include="Common\Exception\NotAWcfServiceExcpetion.cs" />
+    <Compile Include="Common\Exception\ServiceTypeMismatchException.cs" />
+    <Compile Include="Common\ServiceTypeValidator.cs" />
+    <Compile Include="Common\Exception\InvalidServiceTypeException.cs" />
+    <Compile Include="Generator\IClientGenerator.cs" />
+    <Compile Include="Generator\LambdaExpression.cs" />
+    <Compile Include="Generator\MethodWrapper.cs" />
+    <Compile Include="Generator\ClientGenerator.cs" />
+    <Compile Include="Common\Exception\ServiceTypeIsNotMarkedWithServiceContractAttributeException.cs" />
+    <Compile Include="Common\Exception\ServiceTypeNotAnInterfaceException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NinjaFerret.Wcf.Exception\NinjaFerret.Wcf.Exception.csproj">
+      <Project>{CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0}</Project>
+      <Name>NinjaFerret.Wcf.Exception</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
