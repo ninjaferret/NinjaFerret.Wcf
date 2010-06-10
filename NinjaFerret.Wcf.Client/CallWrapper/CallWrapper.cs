@@ -20,6 +20,7 @@
 **/
 using System;
 using System.ServiceModel;
+using NinjaFerret.Wcf.Exception;
 
 namespace NinjaFerret.Wcf.Client.CallWrapper
 {

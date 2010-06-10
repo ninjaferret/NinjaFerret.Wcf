@@ -95,6 +95,11 @@ namespace NinjaFerret.Wcf.Client.Generator
             }
         }
 
+        public void LoadLocal(LocalBuilder localBuilder)
+        {
+            _ilGenerator.Emit(OpCodes.Ldloc_S, localBuilder);
+        }
+
         public void StoreLocal(byte local)
         {
             switch(local)
@@ -117,6 +122,11 @@ namespace NinjaFerret.Wcf.Client.Generator
             }
         }
 
+        public void StoreLocal(LocalBuilder localBuilder)
+        {
+            _ilGenerator.Emit(OpCodes.Stloc_S, localBuilder);
+        }
+
         public void StoreToField(FieldInfo callerField)
         {
             _ilGenerator.Emit(OpCodes.Stfld, callerField);
@@ -132,9 +142,9 @@ namespace NinjaFerret.Wcf.Client.Generator
             _ilGenerator.Emit(OpCodes.Nop);
         }
 
-        public void DeclareLocal(Type type)
+        public LocalBuilder DeclareLocal(Type type)
         {
-            _ilGenerator.DeclareLocal(type);
+            return _ilGenerator.DeclareLocal(type);
         }
 
         public void CreateObject(ConstructorInfo constructorInfo)
@@ -207,6 +217,12 @@ namespace NinjaFerret.Wcf.Client.Generator
             _ilGenerator.Emit(OpCodes.Initobj, type);
         }
 
+        
+        public void BeginExceptionBlock()
+        {
+            _ilGenerator.BeginExceptionBlock();
+        }
+
         public void CatchException(Type exceptionType)
         {
             _ilGenerator.BeginCatchBlock(exceptionType);
@@ -217,9 +233,35 @@ namespace NinjaFerret.Wcf.Client.Generator
             _ilGenerator.BeginFinallyBlock();
         }
 
-        public void EndExceptionBlock(Type exceptionType)
+        public void EndExceptionBlock()
         {
             _ilGenerator.EndExceptionBlock();
+        }
+
+
+        public void Throw()
+        {
+            _ilGenerator.Emit(OpCodes.Throw);
+        }
+
+        public void Throw(Type exceptionType)
+        {
+            _ilGenerator.Emit(OpCodes.Throw, exceptionType);
+        }
+
+        public Label DeclareLabel()
+        {
+            return _ilGenerator.DefineLabel();
+        }
+
+        public void MarkLabel(Label label)
+        {
+            _ilGenerator.MarkLabel(label);
+        }
+
+        public void GotoLabel(Label label)
+        {
+            _ilGenerator.Emit(OpCodes.Br_S, label);
         }
     }
 }

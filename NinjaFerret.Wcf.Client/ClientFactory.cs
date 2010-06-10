@@ -59,7 +59,7 @@ namespace NinjaFerret.Wcf.Client
             CreateTypeIfRequired<TServiceInterface>();
             var callWrapper = GetServiceCallerForEndpoint<TServiceInterface>(endpointName);
             var clientType = _cache.GetType<TServiceInterface>();
-            return (TServiceInterface)Activator.CreateInstance(clientType, new object[] {callWrapper});
+            return (TServiceInterface)Activator.CreateInstance(clientType, new object[] {callWrapper, _exceptionManager});
         }
 
         private ICallWrapper<TServiceInterface> GetServiceCallerForEndpoint<TServiceInterface>(string endpointName) where TServiceInterface : class
