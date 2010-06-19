@@ -3,46 +3,34 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0/d:Faults/f:ArgumentFault.cs" caret="0" fromTop="0" />
-      <File id="CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0/d:Translators/f:ArgumentExceptionTranslator.cs" caret="518" fromTop="12" />
-      <File id="CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0/f:ExceptionManager.cs" caret="1050" fromTop="0" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:CallWrapper/f:CallWrapper.cs" caret="2344" fromTop="27" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Generator/f:IClientGenerator.cs" caret="1034" fromTop="21" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Common/f:ServiceTypeValidator.cs" caret="828" fromTop="7" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:CallWrapper/f:ICallWrapper.cs" caret="1161" fromTop="18" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/d:Exception/f:CallWrapperIsWrongTypeException.cs" caret="110" fromTop="3" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="3425" fromTop="19" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/f:ITypeCache.cs" caret="0" fromTop="0" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/f:TypeCache.cs" caret="903" fromTop="0" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Generator/f:ClientGenerator.cs" caret="2934" fromTop="31" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/f:ICallWrapperCache.cs" caret="116" fromTop="3" />
-      <File id="5438C9AA-FB0A-4E70-A4E7-0511C9C09294/f:ExceptionManagerFixture.cs" caret="432" fromTop="15" />
+      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="2751" fromTop="18" />
+      <File id="70F35742-8014-4B2D-BD41-7073C638A023/f:IBankManagerService.cs" caret="255" fromTop="6" />
+      <File id="70F35742-8014-4B2D-BD41-7073C638A023/d:Model/f:AccountType.cs" caret="116" fromTop="2" />
+      <File id="15646EAF-D8B5-4C50-9A08-9C40375BE04A/f:BankManagerService.cs" caret="974" fromTop="22" />
+      <File id="70F35742-8014-4B2D-BD41-7073C638A023/d:Model/f:BankAccount.cs" caret="0" fromTop="0" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:IBankAdministrator.cs" caret="412" fromTop="8" />
+      <File id="A4834E1D-FEF7-4AC8-AA90-905B9B55886B/f:Program.cs" caret="374" fromTop="10" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:BankAdministrator.cs" caret="637" fromTop="21" />
     </RecentFiles>
     <RecentEdits>
-      <File id="CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0/d:Translators/f:ArgumentExceptionTranslator.cs" caret="116" fromTop="2" />
-      <File id="CC0E7C51-773E-4ED1-AF4E-6D5B82AFA8C0/d:Translators/f:ArgumentExceptionTranslator.cs" caret="518" fromTop="12" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:CallWrapper/f:CallWrapper.cs" caret="12491" fromTop="27" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Generator/f:IClientGenerator.cs" caret="1034" fromTop="24" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Generator/f:IClientGenerator.cs" caret="1449" fromTop="21" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/f:TypeCache.cs" caret="1664" fromTop="0" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="1373" fromTop="6" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="1654" fromTop="11" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:CallWrapper/f:ICallWrapper.cs" caret="1161" fromTop="18" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/d:Exception/f:CallWrapperIsWrongTypeException.cs" caret="110" fromTop="3" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="3221" fromTop="14" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="2182" fromTop="14" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="2759" fromTop="13" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="2733" fromTop="13" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="2621" fromTop="11" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/f:ClientFactory.cs" caret="3551" fromTop="22" />
-      <File id="CBCFF4C2-2FF0-40D0-8558-BF5FF81D1A70/d:Cache/f:ICallWrapperCache.cs" caret="116" fromTop="3" />
-      <File id="5438C9AA-FB0A-4E70-A4E7-0511C9C09294/f:ExceptionManagerFixture.cs" caret="3982" fromTop="102" />
-      <File id="5438C9AA-FB0A-4E70-A4E7-0511C9C09294/f:ExceptionManagerFixture.cs" caret="232" fromTop="7" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:BankAdministrator.cs" caret="1138" fromTop="6" />
+      <File id="15646EAF-D8B5-4C50-9A08-9C40375BE04A/f:BankManagerService.cs" caret="0" fromTop="0" />
+      <File id="70F35742-8014-4B2D-BD41-7073C638A023/f:IBankManagerService.cs" caret="255" fromTop="6" />
+      <File id="70F35742-8014-4B2D-BD41-7073C638A023/d:Model/f:BankAccount.cs" caret="306" fromTop="6" />
+      <File id="15646EAF-D8B5-4C50-9A08-9C40375BE04A/f:BankManagerService.cs" caret="285" fromTop="7" />
+      <File id="15646EAF-D8B5-4C50-9A08-9C40375BE04A/f:BankManagerService.cs" caret="974" fromTop="22" />
+      <File id="A4834E1D-FEF7-4AC8-AA90-905B9B55886B/f:Program.cs" caret="0" fromTop="0" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:IBankAdministrator.cs" caret="182" fromTop="3" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:IBankAdministrator.cs" caret="412" fromTop="8" />
+      <File id="A4834E1D-FEF7-4AC8-AA90-905B9B55886B/f:Program.cs" caret="374" fromTop="10" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:BankAdministrator.cs" caret="469" fromTop="9" />
+      <File id="1E8EE402-B961-4F31-8662-3490A91FC745/f:BankAdministrator.cs" caret="320" fromTop="9" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -57,12 +45,364 @@
   </UnitTestRunnerNUnit>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="return" priority="0" />
+      <Item value="return" priority="30" />
       <Item value="GenerateClient`1" priority="0" />
       <Item value="TServiceInterface`0" priority="1" />
-      <Item value="var" priority="1" />
+      <Item value="var" priority="28" />
       <Item value="callWrapper" priority="0" />
       <Item value="clientType" priority="0" />
+      <Item value="ICallWrapper" priority="4" />
+      <Item value="ServiceTypeValidatorTests`0" priority="0" />
+      <Item value="catch" priority="1" />
+      <Item value="FaultException`0" priority="0" />
+      <Item value="exceptionManager" priority="3" />
+      <Item value="IExceptionManager`0" priority="3" />
+      <Item value="private" priority="9" />
+      <Item value="void" priority="27" />
+      <Item value="MethodWrapper`0" priority="1" />
+      <Item value="methodWrapper" priority="9" />
+      <Item value="Type`0" priority="1" />
+      <Item value="MethodInfo`0" priority="0" />
+      <Item value="methodInfo" priority="1" />
+      <Item value="typeof" priority="3" />
+      <Item value="FaultContractAttribute`0" priority="1" />
+      <Item value="foreach" priority="2" />
+      <Item value="in" priority="0" />
+      <Item value="attributes" priority="2" />
+      <Item value="if" priority="13" />
+      <Item value="Length" priority="1" />
+      <Item value="FaultException" priority="0" />
+      <Item value="attribute" priority="1" />
+      <Item value="continue" priority="0" />
+      <Item value="as" priority="0" />
+      <Item value="typedAttribute" priority="2" />
+      <Item value="faultExceptionType" priority="0" />
+      <Item value="exceptionType" priority="2" />
+      <Item value="_ilGenerator" priority="6" />
+      <Item value="LocalBuilder`0" priority="0" />
+      <Item value="localBuilder" priority="2" />
+      <Item value="OpCode`0" priority="0" />
+      <Item value="il" priority="7" />
+      <Item value="FieldInfo`0" priority="1" />
+      <Item value="exceptionManagerField" priority="2" />
+      <Item value="methodToCall" priority="0" />
+      <Item value="OpCodes`0" priority="2" />
+      <Item value="public" priority="52" />
+      <Item value="Label`0" priority="0" />
+      <Item value="ExtractReturnValue`0" priority="0" />
+      <Item value="method" priority="0" />
+      <Item value="successful" priority="0" />
+      <Item value="_exceptionManager" priority="0" />
+      <Item value="Decimal`0" priority="3" />
+      <Item value="string" priority="67" />
+      <Item value="TransactionPart`0" priority="2" />
+      <Item value="int" priority="7" />
+      <Item value="Transaction`0" priority="3" />
+      <Item value="Guid`0" priority="1" />
+      <Item value="BankAccount" priority="2" />
+      <Item value="Account" priority="0" />
+      <Item value="ConsoleManager`0" priority="2" />
+      <Item value="bankAccountService" priority="0" />
+      <Item value="decimal" priority="11" />
+      <Item value="IUserManager`0" priority="0" />
+      <Item value="Console`0" priority="35" />
+      <Item value="question" priority="3" />
+      <Item value="WriteQuestion`0" priority="1" />
+      <Item value="while" priority="7" />
+      <Item value="null" priority="2" />
+      <Item value="GetString`0" priority="3" />
+      <Item value="reply" priority="7" />
+      <Item value="FormatException`0" priority="0" />
+      <Item value="exception" priority="0" />
+      <Item value="false" priority="2" />
+      <Item value="try" priority="0" />
+      <Item value="result" priority="3" />
+      <Item value="_userManager" priority="21" />
+      <Item value="new" priority="26" />
+      <Item value="AccountType`0" priority="2" />
+      <Item value="GetDecimal`0" priority="0" />
+      <Item value="static" priority="3" />
+      <Item value="StringComparison`0" priority="1" />
+      <Item value="OrdinalIgnoreCase" priority="1" />
+      <Item value="_bankAccountService" priority="4" />
+      <Item value="customerName" priority="2" />
+      <Item value="Clear`0" priority="1" />
+      <Item value="account" priority="16" />
+      <Item value="DisplayCommandPrompt`0" priority="2" />
+      <Item value="readonly" priority="2" />
+      <Item value="List" priority="2" />
+      <Item value="List&lt;BankAccount&gt;" priority="1" />
+      <Item value="userManager" priority="0" />
+      <Item value="BankManager`0" priority="3" />
+      <Item value="bankService" priority="0" />
+      <Item value="consoleManager" priority="7" />
+      <Item value="bankManager" priority="5" />
+      <Item value="command" priority="11" />
+      <Item value="Exited" priority="0" />
+      <Item value="true" priority="1" />
+      <Item value="bool" priority="3" />
+      <Item value="ICommand`0" priority="3" />
+      <Item value="CurrentCultureIgnoreCase" priority="0" />
+      <Item value="InvariantCultureIgnoreCase" priority="2" />
+      <Item value="ApplicationException`0" priority="0" />
+      <Item value="Environment`0" priority="0" />
+      <Item value="CreateCommand`0" priority="1" />
+      <Item value="Account`0" priority="2" />
+      <Item value="Id" priority="0" />
+      <Item value="CustomerName" priority="1" />
+      <Item value="AccountType" priority="1" />
+      <Item value="accountType" priority="2" />
+      <Item value="_bankAccounts" priority="4" />
+      <Item value="List&lt;ICommand&gt;" priority="0" />
+      <Item value="commandString" priority="0" />
+      <Item value="enumerable" priority="0" />
+      <Item value="_bankIdCount" priority="0" />
+      <Item value="class" priority="2" />
+      <Item value="IContext`0" priority="2" />
+      <Item value="_context" priority="4" />
+      <Item value="DepositCommand`0" priority="1" />
+      <Item value="context" priority="3" />
+      <Item value="_bankManager" priority="0" />
+      <Item value="Context`0" priority="1" />
+      <Item value="message" priority="0" />
+      <Item value="value" priority="0" />
+      <Item value="format" priority="1" />
+      <Item value="GetBoolean`0" priority="0" />
+      <Item value="Parts" priority="0" />
+      <Item value="TransactionPart" priority="1" />
+      <Item value="Parent" priority="0" />
+      <Item value="transaction" priority="5" />
+      <Item value="Amount" priority="0" />
+      <Item value="amount" priority="2" />
+      <Item value="Details" priority="0" />
+      <Item value="part" priority="1" />
+      <Item value="transactionPart" priority="1" />
+      <Item value="_transactionPartId" priority="0" />
+      <Item value="TransactionParts" priority="1" />
+      <Item value="List&lt;TransactionPart&gt;" priority="0" />
+      <Item value="List&lt;Transaction&gt;" priority="0" />
+      <Item value="_transactions" priority="0" />
+      <Item value="AccountId" priority="0" />
+      <Item value="bankAccount" priority="0" />
+      <Item value="currentAccount" priority="0" />
+      <Item value="WithdrawCommand`0" priority="0" />
+      <Item value="ConsoleColor`0" priority="0" />
+      <Item value="parameters" priority="0" />
+      <Item value="color" priority="0" />
+      <Item value="View" priority="0" />
+      <Item value="T`0" priority="3" />
+      <Item value="Program`0" priority="0" />
+      <Item value="_model" priority="0" />
+      <Item value="abstract" priority="1" />
+      <Item value="object" priority="2" />
+      <Item value="fieldDescription" priority="3" />
+      <Item value="fieldValue" priority="0" />
+      <Item value="protected" priority="9" />
+      <Item value="TResult`0" priority="0" />
+      <Item value="GetFieldAsString`0" priority="1" />
+      <Item value="EnvironmentVariableTarget`0" priority="2" />
+      <Item value="output" priority="0" />
+      <Item value="params" priority="0" />
+      <Item value="DisplayError`0" priority="0" />
+      <Item value="errorFormat" priority="0" />
+      <Item value="args" priority="0" />
+      <Item value="Action`0" priority="2" />
+      <Item value="action" priority="1" />
+      <Item value="Model" priority="3" />
+      <Item value="for" priority="0" />
+      <Item value="sectionName" priority="0" />
+      <Item value="OutputPageBoundaryLine`0" priority="0" />
+      <Item value="ConsoleView" priority="0" />
+      <Item value="StartPage`0" priority="1" />
+      <Item value="CommandPrompt`0" priority="0" />
+      <Item value="pageName" priority="0" />
+      <Item value="EndPage`0" priority="0" />
+      <Item value="ICommandHandler`0" priority="2" />
+      <Item value="CommandHandler`0" priority="1" />
+      <Item value="partial" priority="0" />
+      <Item value="interface" priority="0" />
+      <Item value="_commands" priority="0" />
+      <Item value="c" priority="0" />
+      <Item value="ActionResult&lt;HomeModel&gt;" priority="0" />
+      <Item value="HomeModel" priority="0" />
+      <Item value="MvcEngine`0" priority="0" />
+      <Item value="commandHandler" priority="0" />
+      <Item value="controllerHandler" priority="0" />
+      <Item value="viewHandler" priority="0" />
+      <Item value="CommandResult`0" priority="2" />
+      <Item value="CommandResult" priority="1" />
+      <Item value="Controller" priority="1" />
+      <Item value="Action" priority="1" />
+      <Item value="IsInterested`0" priority="1" />
+      <Item value="ActionResult&lt;CreateAccountModel&gt;" priority="0" />
+      <Item value="CreateAccountModel" priority="0" />
+      <Item value="ActionResult" priority="0" />
+      <Item value="CreateAccountModel`0" priority="1" />
+      <Item value="createAccountModel" priority="2" />
+      <Item value="BankManagerController`0" priority="0" />
+      <Item value="_service" priority="0" />
+      <Item value="ViewName" priority="0" />
+      <Item value="ActionResult`0" priority="2" />
+      <Item value="enum" priority="0" />
+      <Item value="BankAccount`0" priority="3" />
+      <Item value="AccountNumber" priority="0" />
+      <Item value="accountId" priority="0" />
+      <Item value="OverdraftLimit" priority="0" />
+      <Item value="BankManager" priority="0" />
+      <Item value="IBankAdministrator`0" priority="0" />
+      <Item value="bankAdmin" priority="0" />
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Client.Cache.TypeCache">
+      <Item value="GetType`1" priority="1" />
+      <Item value="AddType`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Exception.IExceptionManager">
+      <Item value="ProcessFault`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Client.Generator.MethodWrapper">
+      <Item value="CatchException`0" priority="0" />
+      <Item value="EndExceptionBlock`0" priority="0" />
+      <Item value="DeclareLocal`0" priority="0" />
+      <Item value="StoreLocal`0" priority="1" />
+      <Item value="LoadThis`0" priority="1" />
+      <Item value="LoadArgument`0" priority="0" />
+      <Item value="LoadLocal`0" priority="0" />
+      <Item value="CallVirtualMethod`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.MethodInfo">
+      <Item value="GetCustomAttributes`0" priority="0" />
+      <Item value="MakeGenericMethod`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="MakeGenericType`0" priority="0" />
+      <Item value="GetMethod`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.FaultContractAttribute">
+      <Item value="DetailType" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.Emit.ILGenerator">
+      <Item value="BeginExceptionBlock`0" priority="0" />
+      <Item value="Emit`0" priority="3" />
+      <Item value="DefineLabel`0" priority="0" />
+      <Item value="MarkLabel`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.Emit.OpCodes">
+      <Item value="Stloc_S" priority="0" />
+      <Item value="Throw" priority="1" />
+      <Item value="Br_S" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="Write`0" priority="7" />
+      <Item value="ReadLine`0" priority="2" />
+      <Item value="WriteLine`0" priority="12" />
+      <Item value="Clear`0" priority="0" />
+      <Item value="ForegroundColor" priority="2" />
+      <Item value="BufferWidth" priority="1" />
+      <Item value="ReadKey`0" priority="0" />
+      <Item value="SetCursorPosition`0" priority="0" />
+      <Item value="CursorTop" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="5" />
+      <Item value="Empty" priority="1" />
+      <Item value="IsNullOrEmpty`0" priority="5" />
+      <Item value="Join`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Decimal">
+      <Item value="Parse`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.IUserManager">
+      <Item value="GetString`0" priority="0" />
+      <Item value="Clear`0" priority="2" />
+      <Item value="DisplayAccount`0" priority="4" />
+      <Item value="GetBoolean`0" priority="0" />
+      <Item value="GetDecimal`0" priority="1" />
+      <Item value="Finished`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NinjaFerret.Wcf.Sample.BankAccount.Interface.Model.AccountType">
+      <Item value="Current" priority="0" />
+      <Item value="HighInterest" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Equals`0" priority="10" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringComparison">
+      <Item value="OrdinalIgnoreCase" priority="0" />
+      <Item value="CurrentCultureIgnoreCase" priority="0" />
+      <Item value="InvariantCultureIgnoreCase" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Interface.IBankAccountService">
+      <Item value="CreateBankAccount`0" priority="1" />
+      <Item value="ProcessTransaction`0" priority="0" />
+      <Item value="FindBankAccount`0" priority="0" />
+      <Item value="GetBankAccount`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Interface.Model.BankAccount">
+      <Item value="AccountType" priority="1" />
+      <Item value="Id" priority="0" />
+      <Item value="CustomerName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Environment">
+      <Item value="Exit`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.BankManager">
+      <Item value="CreateNewAccount`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Guid">
+      <Item value="NewGuid`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="7" />
+      <Item value="Single`1" priority="1" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.Commands.ICommand">
+      <Item value="IsInterested`0" priority="1" />
+      <Item value="Execute`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Count`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.ConsoleManager">
+      <Item value="Commands" priority="3" />
+      <Item value="StartUp`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.IContext">
+      <Item value="CurrentAccount" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Interface.Model.Transaction">
+      <Item value="Parts" priority="1" />
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Interface.Model.TransactionPart">
+      <Item value="Amount" priority="1" />
+      <Item value="Id" priority="0" />
+      <Item value="AccountId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Interface.Model.Account">
+      <Item value="Id" priority="3" />
+      <Item value="TransactionParts" priority="0" />
+      <Item value="Balance" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ConsoleColor">
+      <Item value="Red" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.Model.HomeModel">
+      <Item value="Title" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankAccount.Client.Model.CreateAccountModel">
+      <Item value="CustomerName" priority="0" />
+      <Item value="AccountType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NinjaFerret.Wcf.Sample.BankManager.Client.BankAdministrator">
+      <Item value="CreateAccount`0" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
