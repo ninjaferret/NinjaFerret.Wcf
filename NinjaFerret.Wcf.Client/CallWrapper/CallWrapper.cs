@@ -20,6 +20,7 @@
 **/
 using System;
 using System.ServiceModel;
+using NinjaFerret.Wcf.Exception;
 
 namespace NinjaFerret.Wcf.Client.CallWrapper
 {
@@ -54,6 +55,18 @@ namespace NinjaFerret.Wcf.Client.CallWrapper
                 codeBlock((TServiceInterface)proxy);
                 proxy.Close();
                 closed = true;
+            }
+            catch(FaultException e)
+            {
+                var type = e.GetType();
+                if (!type.IsGenericType)
+                    throw;
+                var property = type.GetProperty("Detail");
+                if (property == null || !property.PropertyType.IsSubclassOf(typeof(Fault)))
+                    throw;
+                var fault = (Fault)property.GetValue(e, null);
+
+                throw fault.ToException();
             }
             finally
             {

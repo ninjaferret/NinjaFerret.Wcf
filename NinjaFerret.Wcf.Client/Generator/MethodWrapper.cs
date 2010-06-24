@@ -218,9 +218,9 @@ namespace NinjaFerret.Wcf.Client.Generator
         }
 
         
-        public void BeginExceptionBlock()
+        public Label BeginExceptionBlock()
         {
-            _ilGenerator.BeginExceptionBlock();
+            return _ilGenerator.BeginExceptionBlock();
         }
 
         public void CatchException(Type exceptionType)
@@ -262,6 +262,11 @@ namespace NinjaFerret.Wcf.Client.Generator
         public void GotoLabel(Label label)
         {
             _ilGenerator.Emit(OpCodes.Br_S, label);
+        }
+
+        public void Leave(Label label)
+        {
+            _ilGenerator.Emit(OpCodes.Leave, label);
         }
     }
 }

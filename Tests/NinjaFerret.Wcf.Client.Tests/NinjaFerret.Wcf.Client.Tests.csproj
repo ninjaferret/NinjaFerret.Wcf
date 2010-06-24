@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\CallWrapperClassFixture.cs" />
-    <Compile Include="Cache\TypeCacheTests.cs" />
     <Compile Include="TestInterface\InvalidClass.cs" />
     <Compile Include="TestInterface\InvalidTestInterface.cs" />
     <Compile Include="TestInterface\ITestInterface.cs" />

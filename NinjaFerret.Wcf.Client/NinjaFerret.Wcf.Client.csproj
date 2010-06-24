@@ -44,12 +44,10 @@
     <Compile Include="Cache\Exception\EndpointForServiceTypeAlreadyExistsException.cs" />
     <Compile Include="Cache\Exception\EndpointNotFoundForTypeException.cs" />
     <Compile Include="Cache\ICallWrapperCache.cs" />
-    <Compile Include="Cache\ITypeCache.cs" />
     <Compile Include="Cache\CallWrapperCache.cs" />
     <Compile Include="Cache\Exception\CallWrapperIsWrongTypeException.cs" />
     <Compile Include="Cache\Exception\ServiceInterfaceTypeNotFoundException.cs" />
     <Compile Include="Cache\Exception\ServiceTypeAlreadyAddedException.cs" />
-    <Compile Include="Cache\TypeCache.cs" />
     <Compile Include="CallWrapper\ICallWrapper.cs" />
     <Compile Include="CallWrapper\CallWrapper.cs" />
     <Compile Include="ClientFactory.cs" />

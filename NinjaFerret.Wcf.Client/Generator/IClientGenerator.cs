@@ -19,12 +19,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 using System;
-using NinjaFerret.Wcf.Exception;
 
 namespace NinjaFerret.Wcf.Client.Generator
 {
     public interface IClientGenerator
     {
-        Type CreateType<TServiceInterface>(IExceptionManager exceptionManager) where TServiceInterface : class;
+        Type CreateType<TServiceInterface>() where TServiceInterface : class;
     }
 }

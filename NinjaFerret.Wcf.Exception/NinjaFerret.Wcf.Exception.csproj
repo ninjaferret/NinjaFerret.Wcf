@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,15 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExceptionManager.cs" />
-    <Compile Include="Exceptions\TranslatorNotFoundException.cs" />
-    <Compile Include="ExceptionTranslator.cs" />
     <Compile Include="Fault.cs" />
-    <Compile Include="Faults\ArgumentFault.cs" />
-    <Compile Include="Faults\TranslationFailedFault.cs" />
-    <Compile Include="Translators\ArgumentExceptionTranslator.cs" />
-    <Compile Include="IExceptionManager.cs" />
-    <Compile Include="IExceptionTranslator.cs" />
+    <Compile Include="IException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

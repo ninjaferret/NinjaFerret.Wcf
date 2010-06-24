@@ -27,42 +27,52 @@ using NinjaFerret.Wcf.Exception;
 
 namespace NinjaFerret.Wcf.Client
 {
-    public class ClientFactory
+    public class ClientFactory<TServiceInterface> where TServiceInterface : class
     {
-        private readonly IServiceTypeValidator _serviceTypeValidator;
-        private readonly ITypeCache _cache;
+        private Type _serviceType;
+        private readonly object _lockObject = new object();
         private readonly ICallWrapperCache _callWrapperCache;
         private readonly IClientGenerator _clientGenerator;
-        private readonly IExceptionManager _exceptionManager;
+        private readonly IServiceTypeValidator _serviceTypeValidator;
 
-        public ClientFactory(IServiceTypeValidator serviceTypeValidator, 
-            ITypeCache cache, 
-            ICallWrapperCache callWrapperCache, 
-            IClientGenerator clientGenerator,
-            IExceptionManager exceptionManager)
+        public ClientFactory()
         {
-            _serviceTypeValidator = serviceTypeValidator;
-            _clientGenerator = clientGenerator;
-            _exceptionManager = exceptionManager;
-            _callWrapperCache = callWrapperCache;
-            _cache = cache;
+            _serviceTypeValidator = new ServiceTypeValidator();
+            _clientGenerator = new ClientGenerator();
+            _callWrapperCache = new CallWrapperCache(_serviceTypeValidator);
         }
 
-        public TServiceInterface GenerateClient<TServiceInterface>() where TServiceInterface : class
+        public TServiceInterface GenerateClient()
         {
-            return GenerateClient<TServiceInterface>(DefaultEnpointName<TServiceInterface>());
+            return GenerateClientForEndpoint(DefaultEnpointName());
         }
 
-        public TServiceInterface GenerateClient<TServiceInterface>(string endpointName) where TServiceInterface : class
+        // This has to be different because overloading causes some DI frameworks (i.e. Castle) to fall over
+        // and since I want to support dependency injection frameworks I have decided to give this a different
+        // name rather than overloading.
+        public TServiceInterface GenerateClientForEndpoint(string endpointName)
         {
             _serviceTypeValidator.ValidateServiceType(typeof(TServiceInterface));
-            CreateTypeIfRequired<TServiceInterface>();
-            var callWrapper = GetServiceCallerForEndpoint<TServiceInterface>(endpointName);
-            var clientType = _cache.GetType<TServiceInterface>();
-            return (TServiceInterface)Activator.CreateInstance(clientType, new object[] {callWrapper, _exceptionManager});
+            CreateTypeIfRequired();
+
+            var callWrapper = GetServiceCallerForEndpoint(endpointName);
+
+            return (TServiceInterface)Activator.CreateInstance(_serviceType, new object[] {callWrapper});
         }
 
-        private ICallWrapper<TServiceInterface> GetServiceCallerForEndpoint<TServiceInterface>(string endpointName) where TServiceInterface : class
+        private void CreateTypeIfRequired()
+        {
+            if (_serviceType != null)
+            {
+                return;
+            }
+            lock (_lockObject)
+            {
+                _serviceType = _clientGenerator.CreateType<TServiceInterface>();
+            }
+        }
+
+        private ICallWrapper<TServiceInterface> GetServiceCallerForEndpoint(string endpointName)
         {
             if (!_callWrapperCache.Contains<TServiceInterface>(endpointName))
             {
@@ -71,22 +81,14 @@ namespace NinjaFerret.Wcf.Client
             return _callWrapperCache.Get<TServiceInterface>(endpointName);
         }
 
-        private void CreateTypeIfRequired<TServiceInterface>() where TServiceInterface : class
-        {
-            if (_cache.Contains<TServiceInterface>())
-            {
-                return;
-            }
-            var client = _clientGenerator.CreateType<TServiceInterface>(_exceptionManager);
-            _cache.AddType<TServiceInterface>(client);
-        }
-
-        private static string DefaultEnpointName<TServiceInterface>()
+        private static string DefaultEnpointName()
         {
             return typeof (TServiceInterface).Name; 
         }
         
     }
+
+
 }
 
 

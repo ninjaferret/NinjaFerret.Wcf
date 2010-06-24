@@ -26,16 +26,11 @@ using System.ServiceModel;
 using System.Threading;
 using NinjaFerret.Wcf.Client.CallWrapper;
 using NinjaFerret.Wcf.Client.Common.Exception;
-using NinjaFerret.Wcf.Exception;
 
 namespace NinjaFerret.Wcf.Client.Generator
 {
     public class ClientGenerator : IClientGenerator
     {
-        private readonly AssemblyBuilder _assemblyBuilder;
-        private readonly ModuleBuilder _moduleBuilder;
-        private readonly string _generatedAssemblyName;
-
         private const TypeAttributes ServiceClientTypeAttributes = TypeAttributes.Public |
                                                                    TypeAttributes.Class |
                                                                    TypeAttributes.AutoLayout |
@@ -51,14 +46,16 @@ namespace NinjaFerret.Wcf.Client.Generator
                                                                MethodAttributes.RTSpecialName |
                                                                MethodAttributes.SpecialName |
                                                                MethodAttributes.HideBySig;
-        
+        private readonly AssemblyBuilder _assemblyBuilder;
+        private readonly ModuleBuilder _moduleBuilder;
+        private readonly string _generatedAssemblyName;
 
         public ClientGenerator()
         {
             _generatedAssemblyName = string.Format("WcfClients{0}", Guid.NewGuid().ToString().Replace("-", "_"));
             var assemblyName = new AssemblyName(_generatedAssemblyName);
             _assemblyBuilder = Thread.GetDomain().DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.RunAndSave);
-            _moduleBuilder = _assemblyBuilder.DefineDynamicModule(_generatedAssemblyName,string.Format("{0}.dll", _generatedAssemblyName),  true);
+            _moduleBuilder = _assemblyBuilder.DefineDynamicModule(_generatedAssemblyName, string.Format("{0}.dll", _generatedAssemblyName), true);
         }
 
         public void GenerateAssembly()
@@ -66,7 +63,7 @@ namespace NinjaFerret.Wcf.Client.Generator
             _assemblyBuilder.Save(string.Format("{0}.dll", _generatedAssemblyName));
         }
 
-        public Type CreateType<TServiceInterface>(IExceptionManager exceptionManager) where TServiceInterface : class
+        public Type CreateType<TServiceInterface>() where TServiceInterface : class
         {
             var serviceType = typeof(TServiceInterface);
             ValidateType(serviceType);
@@ -74,15 +71,14 @@ namespace NinjaFerret.Wcf.Client.Generator
             var returnTypeBuilder = GetTypeBuilder(serviceType);
 
             var callManagerField = DefineServiceCallerField<TServiceInterface>(returnTypeBuilder);
-            var exceptionManagerField = returnTypeBuilder.DefineField("serviceCaller", typeof(IExceptionManager),
-                                                 FieldAttributes.InitOnly | FieldAttributes.Private);
-            DefineConstructor<TServiceInterface>(returnTypeBuilder, callManagerField, exceptionManagerField);
+
+            DefineConstructor<TServiceInterface>(returnTypeBuilder, callManagerField);
             var methods = serviceType.GetMethods().ToList();
             foreach (var method in methods)
             {
                 var expression = new LambdaExpression(returnTypeBuilder, method, serviceType);
                 expression.DefineAsNestedType();
-                GenerateMethod<TServiceInterface>(method, returnTypeBuilder, expression, callManagerField, exceptionManagerField);
+                GenerateMethod<TServiceInterface>(method, returnTypeBuilder, expression, callManagerField);
             }
 
             var result = returnTypeBuilder.CreateType();
@@ -91,26 +87,23 @@ namespace NinjaFerret.Wcf.Client.Generator
 
         private static FieldBuilder DefineServiceCallerField<TServiceInterface>(TypeBuilder returnTypeBuilder) where TServiceInterface : class
         {
-            var callerType = typeof (ICallWrapper<TServiceInterface>);
+            var callerType = typeof(ICallWrapper<TServiceInterface>);
             return returnTypeBuilder.DefineField("serviceCaller", callerType,
                                                  FieldAttributes.InitOnly | FieldAttributes.Private);
         }
 
-        private static void DefineConstructor<TServiceInterface>(TypeBuilder returnTypeBuilder, FieldInfo callerField, FieldInfo exceptionManagerField) where TServiceInterface : class
+        private static void DefineConstructor<TServiceInterface>(TypeBuilder returnTypeBuilder, FieldInfo callerField) where TServiceInterface : class
         {
             var constructorBuilder = returnTypeBuilder.DefineConstructor(ConstructorAttributes, CallingConventions.HasThis,
-                                                                      new[] {typeof (ICallWrapper<TServiceInterface>), typeof(IExceptionManager)});
+                                                                      new[] { typeof(ICallWrapper<TServiceInterface>) });
             var il = new MethodWrapper(constructorBuilder);
             il.LoadThis();
             il.LoadArgument(1);
             il.StoreToField(callerField);
-            il.LoadThis();
-            il.LoadArgument(2);
-            il.StoreToField(exceptionManagerField);
             il.Return();
         }
 
-        private static void GenerateMethod<TServiceInterface>(MethodInfo method, TypeBuilder typeBuilder, LambdaExpression lambdaExpression, FieldInfo callManagerField, FieldBuilder exceptionManagerField) where TServiceInterface : class
+        private static void GenerateMethod<TServiceInterface>(MethodInfo method, TypeBuilder typeBuilder, LambdaExpression lambdaExpression, FieldInfo callManagerField) where TServiceInterface : class
         {
             var delegateType = typeof(MakeCallToTheWcfServiceDelegate<TServiceInterface>);
             var callMethodInfo = callManagerField.FieldType.GetMethod("Call", new[] { delegateType });
@@ -118,7 +111,6 @@ namespace NinjaFerret.Wcf.Client.Generator
             var methodBuilder = GetMethodBuilder(typeBuilder, method);
             methodBuilder.InitLocals = true;
             var il = new MethodWrapper(methodBuilder);
-            var successful = il.DeclareLabel();
             il.DeclareLocal(lambdaExpression.TypeBuilder);
             DefineReturnTypeLocal(method, il);
 
@@ -126,9 +118,9 @@ namespace NinjaFerret.Wcf.Client.Generator
             il.StoreLocal(0);
 
             ProcessParameters(method, il, lambdaExpression);
-            
+
             PrepareReturnValue(method, il, lambdaExpression);
-            BeginTryBlockIfNecessary(method, il);
+
             // Load the object onto the stack
             il.LoadThis();
             il.LoadField(callManagerField);
@@ -136,23 +128,17 @@ namespace NinjaFerret.Wcf.Client.Generator
             il.LoadLocal(0);
             il.LoadFunction(lambdaExpression.Method);
             // Call the delegate constructor popping the lambda expression and method off the stack
-            
+
             il.CreateObject(delegateType.GetConstructor(new[] { typeof(object), typeof(IntPtr) }));
-            
+
             // There should now be the call manager and the delegate on the stack
             il.CallVirtualMethod(callMethodInfo);
             il.DoNothing();
-            SaveReturnValue(method, il, lambdaExpression);
-            il.GotoLabel(successful);
-            CatchErrors(il, method, exceptionManagerField);
-            il.MarkLabel(successful);
-            ExtractReturnValue(il);
+            ExtractReturnValue(method, il, lambdaExpression);
             il.Return();
             typeBuilder.DefineMethodOverride(methodBuilder, method);
             return;
         }
-
-        
 
         private static void DefineReturnTypeLocal(MethodInfo methodInfo, MethodWrapper il)
         {
@@ -204,18 +190,14 @@ namespace NinjaFerret.Wcf.Client.Generator
             il.DoNothing();
         }
 
-        private static void ExtractReturnValue(MethodWrapper il)
-        {
-            il.LoadLocal(1);
-        }
-
-        private static void SaveReturnValue(MethodInfo method, MethodWrapper il, LambdaExpression lambdaExpression)
+        private static void ExtractReturnValue(MethodInfo method, MethodWrapper il, LambdaExpression lambdaExpression)
         {
             if (!HasReturnValue(method)) return;
             il.LoadLocal(0);
             il.LoadField(lambdaExpression.ResultField);
             il.StoreLocal(1);
             il.DoNothing();
+            il.LoadLocal(1);
         }
 
         private static void EmitDefaultValueType(MethodWrapper il, Type returnType)
@@ -253,47 +235,6 @@ namespace NinjaFerret.Wcf.Client.Generator
             }
             // DEFAULT Push int32 onto stack - OpCodes.Ldc_I4;
             il.LoadInteger(0);
-        }
-
-        private static void BeginTryBlockIfNecessary(MethodInfo methodInfo, MethodWrapper methodWrapper)
-        {
-            var attributes = methodInfo.GetCustomAttributes(typeof(FaultContractAttribute), true);
-            if (attributes.Length > 0)
-            {
-                methodWrapper.BeginExceptionBlock();
-            }
-        }
-
-        private static void CatchErrors(MethodWrapper methodWrapper, MethodInfo methodInfo, FieldInfo exceptionManagerField)
-        {
-            var attributes = methodInfo.GetCustomAttributes(typeof (FaultContractAttribute), true);
-            var faultExceptionType = typeof(FaultException<>);
-            foreach(var attribute in attributes)
-            {
-                var typedAttribute = attribute as FaultContractAttribute;
-                if (typedAttribute == null)
-                    continue;
-                var exceptionType = faultExceptionType.MakeGenericType(typedAttribute.DetailType);
-                
-                methodWrapper.CatchException(exceptionType);
-                var localBuilder = methodWrapper.DeclareLocal(exceptionType);
-                methodWrapper.StoreLocal(localBuilder);
-                methodWrapper.LoadThis();
-                methodWrapper.LoadLocal(localBuilder);
-
-                var methodToCall =
-                    typeof (IExceptionManager).GetMethod("ProcessFault").MakeGenericMethod(typedAttribute.DetailType);
-
-                methodWrapper.CallVirtualMethod(methodToCall);
-
-                methodWrapper.Throw();
-
-
-            }
-            if (attributes.Length > 0)
-            {
-                methodWrapper.EndExceptionBlock();
-            }
         }
 
         private static bool HasReturnValue(MethodInfo method)

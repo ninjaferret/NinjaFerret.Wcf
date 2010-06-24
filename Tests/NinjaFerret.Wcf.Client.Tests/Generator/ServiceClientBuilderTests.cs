@@ -31,7 +31,6 @@ using NinjaFerret.Wcf.Client.CallWrapper;
 using NinjaFerret.Wcf.Client.Common.Exception;
 using NinjaFerret.Wcf.Client.Generator;
 using NinjaFerret.Wcf.Client.Tests.TestInterface;
-using NinjaFerret.Wcf.Exception;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -44,7 +43,6 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         private ClientGenerator clientBuilder;
         private ICallWrapper<ITestInterface> callManager;
         private Type resultType;
-        private IExceptionManager exceptionManager;
 
         [TestFixtureSetUp]
         public void SetUp()
@@ -54,13 +52,12 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
             callManager.Expect(x => x.Call(null)).IgnoreArguments().Do(
                 new TestCall(DoCall)).Repeat.Any();
             testImplementation = new TestInterfaceClass(callManager);
-            exceptionManager = MockRepository.GenerateMock<IExceptionManager>();
         }
 
         [Test]
         public void Should_Return_A_Type_For_The_Given_Interface()
         {
-            var type = clientBuilder.CreateType<ITestInterface>(null);
+            var type = clientBuilder.CreateType<ITestInterface>();
             Assert.That(type.GetInterfaces().Length, Is.EqualTo(1));
             Assert.That(type.GetInterfaces()[0], Is.EqualTo(typeof(ITestInterface)));
         }
@@ -68,8 +65,8 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         [Test]
         public void Should_Return_A_Type_That_Can_Be_Instantiated()
         {
-            var type = clientBuilder.CreateType<ITestInterface>(exceptionManager);
-            var createdObject =  Activator.CreateInstance(type, new object[] { callManager, exceptionManager });
+            var type = clientBuilder.CreateType<ITestInterface>();
+            var createdObject =  Activator.CreateInstance(type, new object[] { callManager });
             Assert.That(createdObject, Is.AssignableTo(typeof(ITestInterface)));
         }
 
@@ -346,7 +343,7 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         [ExpectedException(typeof(ServiceTypeNotAnInterfaceException))]
         public void Should_Throw_An_Exception_If_Type_Is_Not_An_Interface()
         {
-            clientBuilder.CreateType<TestInterfaceClass>(exceptionManager);
+            clientBuilder.CreateType<TestInterfaceClass>();
         }
 
         
@@ -355,7 +352,7 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         [ExpectedException(typeof(ServiceTypeIsNotMarkedWithServiceContractAttributeException))]
         public void Should_Throw_An_Exception_If_Type_Is_Not_Marked_As_A_ServiceContract()
         {
-            clientBuilder.CreateType<InvalidTestInterface>(exceptionManager);
+            clientBuilder.CreateType<InvalidTestInterface>();
         }
 
         private delegate void TestCall(MakeCallToTheWcfServiceDelegate<ITestInterface> codeBlock);
@@ -369,9 +366,9 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         {
             if (resultType == null)
             {
-                resultType = clientBuilder.CreateType<ITestInterface>(exceptionManager);
+                resultType = clientBuilder.CreateType<ITestInterface>();
             }
-            return (ITestInterface)Activator.CreateInstance(resultType, new object[] { callManager, exceptionManager });
+            return (ITestInterface)Activator.CreateInstance(resultType, new object[] { callManager });
         }
 
         [Test]
@@ -379,7 +376,7 @@ namespace NinjaFerret.Wcf.Client.Tests.Generator
         public void GenerateAssembly()
         {
             var builder = new ClientGenerator();
-            builder.CreateType<ITestInterface>(exceptionManager);
+            builder.CreateType<ITestInterface>();
             builder.GenerateAssembly();
         }
 
