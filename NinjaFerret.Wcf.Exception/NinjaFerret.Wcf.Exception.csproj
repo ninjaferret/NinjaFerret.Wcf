@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptionTranslator.cs" />
-    <Compile Include="Fault.cs" />
-    <Compile Include="IException.cs" />
+    <Compile Include="TranslatableFault.cs" />
+    <Compile Include="ITranslatableException.cs" />
     <Compile Include="IExceptionTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

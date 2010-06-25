@@ -5,7 +5,7 @@ using NinjaFerret.Wcf.Sample.BankManager.Interface.Faults;
 
 namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
 {
-    public class AccountDoesNotExistException : ApplicationException, IException
+    public class AccountDoesNotExistException : ApplicationException, ITranslatableException
     {
         public AccountDoesNotExistException(string accountNumber) :
             base(string.Format("Could not find account {0}", accountNumber))

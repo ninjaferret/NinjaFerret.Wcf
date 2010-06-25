@@ -6,7 +6,7 @@ namespace NinjaFerret.Wcf.Exception
     {
         public FaultException ToFaultException(System.Exception exception)
         {
-            var typeException = exception as IException;
+            var typeException = exception as ITranslatableException;
             return typeException == null
                        ? new FaultException("A fault occurred calling this service.")
                        : typeException.ToFaultException();
@@ -19,10 +19,10 @@ namespace NinjaFerret.Wcf.Exception
                 return new System.Exception(faultException.Message);
 
             var property = type.GetProperty("Detail");
-            if (property == null || !property.PropertyType.IsSubclassOf(typeof(Fault)))
+            if (property == null || !property.PropertyType.IsSubclassOf(typeof(TranslatableFault)))
                 return new System.Exception(faultException.Message);
 
-            var fault = (Fault)property.GetValue(faultException, null);
+            var fault = (TranslatableFault)property.GetValue(faultException, null);
             return fault.ToException();
         }
     }

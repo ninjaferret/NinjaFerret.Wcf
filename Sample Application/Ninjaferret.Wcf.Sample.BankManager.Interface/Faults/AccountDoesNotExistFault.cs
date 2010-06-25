@@ -5,7 +5,7 @@ using NinjaFerret.Wcf.Sample.BankManager.Interface.Exception;
 namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Faults
 {
     [Serializable]
-    public class AccountDoesNotExistFault : Fault
+    public class AccountDoesNotExistFault : TranslatableFault
     {
         public string AccountNumber { get; set; }
 

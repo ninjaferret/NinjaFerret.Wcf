@@ -6,7 +6,7 @@ using NinjaFerret.Wcf.Sample.BankManager.Interface.Model;
 namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Faults
 {
     [Serializable]
-    public class NoAccountsFoundFault : Fault
+    public class NoAccountsFoundFault : TranslatableFault
     {
         public AccountType AccountType { get; set; }
         public string CustomerName { get; set; }

@@ -5,7 +5,7 @@ using NinjaFerret.Wcf.Sample.BankManager.Interface.Faults;
 
 namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
 {
-    public class InsufficientFundsException : ApplicationException, IException
+    public class InsufficientFundsException : ApplicationException, ITranslatableException
     {
         public InsufficientFundsException(string accountNumber, decimal amount)
             : base(string.Format("There are insufficient funds to withdraw {0} from account {1}", amount, accountNumber))

@@ -6,7 +6,7 @@ using NinjaFerret.Wcf.Sample.BankManager.Interface.Model;
 
 namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
 {
-    public class NoAccountsFoundException : ApplicationException, IException
+    public class NoAccountsFoundException : ApplicationException, ITranslatableException
     {
         public AccountType AccountType { get; private set;}
         public string CustomerName { get; private set; }
