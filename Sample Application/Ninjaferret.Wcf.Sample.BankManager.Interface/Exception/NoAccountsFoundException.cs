@@ -1,4 +1,5 @@
 using System;
+using System.ServiceModel;
 using NinjaFerret.Wcf.Exception;
 using NinjaFerret.Wcf.Sample.BankManager.Interface.Faults;
 using NinjaFerret.Wcf.Sample.BankManager.Interface.Model;
@@ -16,9 +17,12 @@ namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
             CustomerName = customerName;
         }
 
-        public Fault ToFault()
+        public FaultException ToFaultException()
         {
-            return new NoAccountsFoundFault {AccountType = AccountType, CustomerName = CustomerName};
+            return
+                new FaultException<NoAccountsFoundFault>(
+                    new NoAccountsFoundFault {AccountType = AccountType, CustomerName = CustomerName},
+                    "The account could not be found");
         }
     }
 }

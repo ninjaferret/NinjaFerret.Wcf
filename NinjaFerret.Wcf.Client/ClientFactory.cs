@@ -34,9 +34,11 @@ namespace NinjaFerret.Wcf.Client
         private readonly ICallWrapperCache _callWrapperCache;
         private readonly IClientGenerator _clientGenerator;
         private readonly IServiceTypeValidator _serviceTypeValidator;
+        private readonly IExceptionTranslator _exceptionTranslator;
 
-        public ClientFactory()
+        public ClientFactory(IExceptionTranslator exceptionTranslator)
         {
+            _exceptionTranslator = exceptionTranslator;
             _serviceTypeValidator = new ServiceTypeValidator();
             _clientGenerator = new ClientGenerator();
             _callWrapperCache = new CallWrapperCache(_serviceTypeValidator);
@@ -76,7 +78,7 @@ namespace NinjaFerret.Wcf.Client
         {
             if (!_callWrapperCache.Contains<TServiceInterface>(endpointName))
             {
-                _callWrapperCache.Add(new CallWrapper<TServiceInterface>()); 
+                _callWrapperCache.Add(new CallWrapper<TServiceInterface>(_exceptionTranslator)); 
             }
             return _callWrapperCache.Get<TServiceInterface>(endpointName);
         }

@@ -1,4 +1,5 @@
 using System;
+using System.ServiceModel;
 using NinjaFerret.Wcf.Exception;
 using NinjaFerret.Wcf.Sample.BankManager.Interface.Faults;
 
@@ -17,9 +18,12 @@ namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
 
         public decimal Amount { get; private set; }
 
-        public Fault ToFault()
+        public FaultException ToFaultException()
         {
-            return new InsufficientFundsFault{ AccountNumber = AccountNumber, Amount = Amount};
+            return
+                new FaultException<InsufficientFundsFault>(
+                    new InsufficientFundsFault {AccountNumber = AccountNumber, Amount = Amount},
+                    "There are insufficient funds to complete this transaction");
         }
     }
 }

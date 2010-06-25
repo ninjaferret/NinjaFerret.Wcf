@@ -1,4 +1,5 @@
 using System;
+using System.ServiceModel;
 using NinjaFerret.Wcf.Exception;
 using NinjaFerret.Wcf.Sample.BankManager.Interface.Faults;
 
@@ -14,9 +15,12 @@ namespace NinjaFerret.Wcf.Sample.BankManager.Interface.Exception
 
         public string AccountNumber { get; private set; }
 
-        public Fault ToFault()
+        public FaultException ToFaultException()
         {
-            return new AccountDoesNotExistFault {AccountNumber = AccountNumber};
+            return
+                new FaultException<AccountDoesNotExistFault>(
+                    new AccountDoesNotExistFault {AccountNumber = AccountNumber},
+                    "The account does not exist");
         }
     }
 }

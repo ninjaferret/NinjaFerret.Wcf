@@ -26,17 +26,19 @@ namespace NinjaFerret.Wcf.Client.CallWrapper
 {
     public class CallWrapper<TServiceInterface> : ICallWrapper<TServiceInterface> where TServiceInterface : class
     {
+        private readonly IExceptionTranslator _exceptionTranslator;
         private readonly ChannelFactory<TServiceInterface> channelFactory;
 
         public string EndpointName { get; private set; }
 
-        public CallWrapper() : this (typeof(TServiceInterface).Name)
+        public CallWrapper(IExceptionTranslator exceptionTranslator) : this (typeof(TServiceInterface).Name, exceptionTranslator)
         {
             
         }
 
-        public CallWrapper(string endpointName)
+        public CallWrapper(string endpointName, IExceptionTranslator exceptionTranslator)
         {
+            _exceptionTranslator = exceptionTranslator;
             EndpointName = endpointName;
             channelFactory = new ChannelFactory<TServiceInterface>(endpointName);
         }
@@ -58,15 +60,7 @@ namespace NinjaFerret.Wcf.Client.CallWrapper
             }
             catch(FaultException e)
             {
-                var type = e.GetType();
-                if (!type.IsGenericType)
-                    throw;
-                var property = type.GetProperty("Detail");
-                if (property == null || !property.PropertyType.IsSubclassOf(typeof(Fault)))
-                    throw;
-                var fault = (Fault)property.GetValue(e, null);
-
-                throw fault.ToException();
+                throw _exceptionTranslator.ToException(e);
             }
             finally
             {
