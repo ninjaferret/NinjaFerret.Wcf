@@ -46,13 +46,13 @@ namespace NinjaFerret.Wcf.Client
 
         public TServiceInterface Generate()
         {
-            return Generate(DefaultEnpointName());
+            return GenerateForEndpoint(DefaultEnpointName());
         }
 
         // This has to be different because overloading causes some DI frameworks (i.e. Castle) to fall over
         // and since I want to support dependency injection frameworks I have decided to give this a different
         // name rather than overloading.
-        public TServiceInterface Generate(string endpointName)
+        public TServiceInterface GenerateForEndpoint(string endpointName)
         {
             _serviceTypeValidator.ValidateServiceType(typeof(TServiceInterface));
             CreateTypeIfRequired();
