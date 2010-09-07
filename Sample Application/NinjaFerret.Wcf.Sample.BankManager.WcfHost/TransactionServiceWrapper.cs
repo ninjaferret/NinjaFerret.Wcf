@@ -42,8 +42,7 @@ namespace NinjaFerret.Wcf.Sample.BankManager.WcfHost
             catch(InsufficientFundsException e)
             {
                 Console.WriteLine("Exception occurred: {0}", e.Message);
-                var fault = new InsufficientFundsFault {AccountNumber = e.AccountNumber, Amount = e.Amount};
-                throw new FaultException<InsufficientFundsFault>(fault, "There were insufficient funds to withdraw the amount");
+                throw e.ToFaultException();
             }
             catch (System.Exception e)
             {
@@ -63,8 +62,7 @@ namespace NinjaFerret.Wcf.Sample.BankManager.WcfHost
             catch (InsufficientFundsException e)
             {
                 Console.WriteLine("Exception occurred: {0}", e.Message);
-                var fault = new InsufficientFundsFault { AccountNumber = e.AccountNumber, Amount = e.Amount };
-                throw new FaultException<InsufficientFundsFault>(fault, "There were insufficient funds to withdraw the amount");
+                throw e.ToFaultException();
             }
             catch (System.Exception e)
             {

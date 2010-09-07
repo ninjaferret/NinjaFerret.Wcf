@@ -28,8 +28,7 @@ namespace NinjaFerret.Wcf.Sample.BankManager.WcfHost
             catch (AccountDoesNotExistException e)
             {
                 Console.WriteLine("No accounts found exception thrown: {0}", e.Message);
-                var fault = new AccountDoesNotExistFault { AccountNumber = e.AccountNumber};
-                throw new FaultException<AccountDoesNotExistFault>(fault, "Could not find any accounts matching the criteria");
+                throw e.ToFaultException();
             }
             catch (System.Exception e)
             {
@@ -48,8 +47,7 @@ namespace NinjaFerret.Wcf.Sample.BankManager.WcfHost
             catch(NoAccountsFoundException e)
             {
                 Console.WriteLine("No accounts found exception thrown: {0}", e.Message);
-                var fault = new NoAccountsFoundFault {AccountType = e.AccountType, CustomerName = e.CustomerName};
-                throw new FaultException<NoAccountsFoundFault>(fault, "Could not find any accounts matching the criteria");
+                throw e.ToFaultException();
             }
             catch (System.Exception e)
             {
