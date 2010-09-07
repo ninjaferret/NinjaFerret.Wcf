@@ -1,5 +1,0 @@
-C:\Code\MyCode\NinjaFerret.Wcf\NinjaFerret.Wcf.Exception\bin\Debug\NinjaFerret.Wcf.Exception.dll
-C:\Code\MyCode\NinjaFerret.Wcf\NinjaFerret.Wcf.Exception\bin\Debug\NinjaFerret.Wcf.Exception.pdb
-C:\Code\MyCode\NinjaFerret.Wcf\NinjaFerret.Wcf.Exception\obj\Debug\ResolveAssemblyReference.cache
-C:\Code\MyCode\NinjaFerret.Wcf\NinjaFerret.Wcf.Exception\obj\Debug\NinjaFerret.Wcf.Exception.dll
-C:\Code\MyCode\NinjaFerret.Wcf\NinjaFerret.Wcf.Exception\obj\Debug\NinjaFerret.Wcf.Exception.pdb

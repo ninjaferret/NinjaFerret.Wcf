@@ -1,7 +1,7 @@
 ﻿/**
- * This file is part of WcfClientFactory
+ * This file is part of NinjaFerret.Wcf.Client
  * 
- *  WcfClientFactory is a tool to automatically generate a proxy client
+ *  NinjaFerret.Wcf.Client is a framework that automatically generates a proxy client
  *  for a specified WCF Service interface.
  *  Copyright (C) 2010  Ian Johnson
  *  

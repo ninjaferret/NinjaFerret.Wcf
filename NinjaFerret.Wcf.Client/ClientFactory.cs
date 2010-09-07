@@ -1,7 +1,7 @@
 ﻿/**
- * This file is part of WcfClientFactory
+ * This file is part of NinjaFerret.Wcf.Client
  * 
- *  WcfClientFactory is a tool to automatically generate a proxy client
+ *  NinjaFerret.Wcf.Client is a framework to automatically generate a proxy client
  *  for a specified WCF Service interface.
  *  Copyright (C) 2010  Ian Johnson
  *  
@@ -44,15 +44,15 @@ namespace NinjaFerret.Wcf.Client
             _callWrapperCache = new CallWrapperCache(_serviceTypeValidator);
         }
 
-        public TServiceInterface GenerateClient()
+        public TServiceInterface Generate()
         {
-            return GenerateClientForEndpoint(DefaultEnpointName());
+            return Generate(DefaultEnpointName());
         }
 
         // This has to be different because overloading causes some DI frameworks (i.e. Castle) to fall over
         // and since I want to support dependency injection frameworks I have decided to give this a different
         // name rather than overloading.
-        public TServiceInterface GenerateClientForEndpoint(string endpointName)
+        public TServiceInterface Generate(string endpointName)
         {
             _serviceTypeValidator.ValidateServiceType(typeof(TServiceInterface));
             CreateTypeIfRequired();
